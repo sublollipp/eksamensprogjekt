@@ -2,7 +2,9 @@ ArrayList<GraphicObject> gO = new ArrayList<GraphicObject>(); // Alle grafiske o
 
 void setup() {
     size(1200, 800);
-    gO.add(new SaveButton(this, 200, 200, 200, 200));
+    gO.add(new SaveButton(this, 50, 50, 200, 200));
+    gO.add(new NewFolderButton(this, 50, 275, 200, 200));
+    gO.add(new NewFileButton(this, 50, 500, 200, 200));
 }
 
 void mousePressed() {
