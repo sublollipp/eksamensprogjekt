@@ -23,8 +23,13 @@ void mouseReleased() {
     }
 }
 
+void UI() {
+    
+}
+
 void draw() {
     background(255);
+    UI():
     for(GraphicObject object : gO) {
         object.draw();
     }
