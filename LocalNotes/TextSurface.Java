@@ -12,4 +12,22 @@ public class TextSurface extends ClickableObject{
         p.stroke(0);
         super.draw();
     }
+    private void onClick(){
+        onTextSurface = true;
+    }
+    void KeyPressed(){
+    if (onTextSurface) {
+        if (key == BACKSPACE && inputText.length() > 0) {
+            inputText = inputText.substring(0, inputText.length() - 1);  // Remove last char
+        } 
+        else if (key == ENTER) {
+            println("User typed: " + inputText);  // Example action
+            onTextSurface = false;  // Optional: deactivate on Enter
+        } 
+        else if (key != CODED) {
+            inputText += key;  // Append key input
+    }
+}
+    
+    
 }
