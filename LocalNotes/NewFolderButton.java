@@ -1,6 +1,6 @@
 import processing.core.*;
 
-public class NewFolderButton extends ClickableObject {
+public class NewFolderButton extends MenuButton {
 
     private PImage saveImage;
 

@@ -12,6 +12,6 @@ public class NewFileButton extends ClickableObject {
     public void draw() {
         p.strokeWeight(0);
         super.draw();
-        p.image(saveImage, x, y, w, h);
+        p.image(saveImage, x, y, h, h);
     }
 }
