@@ -1,3 +1,5 @@
+import processing.core.*;
+
 public class Explorer extends GraphicObject {
 
     public Explorer(PApplet p, int x, int y, int w, int h) {
