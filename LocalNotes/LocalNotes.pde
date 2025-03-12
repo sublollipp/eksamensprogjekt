@@ -5,7 +5,15 @@ void setup() {
     gO.add(new SaveButton(this, 50, 50, 200, 200));
     gO.add(new NewFolderButton(this, 50, 275, 200, 200));
     gO.add(new NewFileButton(this, 50, 500, 200, 200));
-    gO.add(new TextSurface(this, 410, 50, 750, 700));
+    gO.add(new TypeSurface(this, 410, 50, 750, 700));
+}
+
+void keyPressed() {
+    for (GraphicObject object : gO) {
+        if (object instanceof TypeSurface) {
+            ((TypeSurface) object).keyPressed();
+        }
+    }
 }
 
 void mousePressed() {
