@@ -1,45 +1,40 @@
-ArrayList<GraphicObject> gO = new ArrayList<GraphicObject>(); // Alle grafiske objekter (alt fra skrivefladen til knapper) skal tilføjes til denne liste
+LocalNotesSingleton localNotes = null;
 
 void setup() {
     size(1200, 800);
-    gO.add(new SaveButton(this, 50, 50, 200, 200));
-    gO.add(new NewFolderButton(this, 50, 275, 200, 200));
-    gO.add(new NewFileButton(this, 50, 500, 200, 200));
-    gO.add(new TypeSurface(this, 410, 50, 750, 700));
+    LocalNotesSingleton.makeInstance(this);
+    localNotes = LocalNotesSingleton.getInstance();
+    localNotes.setup();
+}
+
+void draw() {
+    localNotes.draw();
 }
 
 void keyPressed() {
-    for (GraphicObject object : gO) {
-        if (object instanceof TypeSurface) {
-            ((TypeSurface) object).keyPressed();
-        }
-    }
+    localNotes.keyPressed();
 }
 
 void mousePressed() {
-    for (GraphicObject object : gO) {
-        if (object instanceof ClickableObject) {
-            ((ClickableObject) object).onMouseClicked();
-        }
+    if (mouseButton == LEFT) {
+        localNotes.mousePressed();
+    }
+
+    if (mouseButton == RIGHT) {
+        localNotes.rightMousePressed();
     }
 }
 
 void mouseReleased() {
-    for (GraphicObject object : gO) {
-        if (object instanceof ClickableObject) {
-            ((ClickableObject) object).onMouseReleased();
-        }
+    if (mouseButton == LEFT) {
+        localNotes.mouseReleased();
+    }
+
+    if (mouseButton == RIGHT) {
+        localNotes.rightMouseReleased();
     }
 }
 
-void UI() {
-
-}
-
-void draw() {
-    background(255);
-    UI();
-    for(GraphicObject object : gO) {
-        object.draw();
-    }
+void mouseWheel(MouseEvent mouseEvent) {
+    localNotes.mouseWheel(mouseEvent);
 }

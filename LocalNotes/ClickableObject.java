@@ -1,11 +1,15 @@
 import processing.core.*;
 
-public class ClickableObject extends GraphicObject{
+public class ClickableObject extends HoverableObject implements ClickResponsive {
 
-    protected boolean hovered = false, mouseHeld = false;
+    protected boolean mouseHeld = false;
 
     protected ClickableObject(PApplet p, int x, int y, int w, int h) {
-        super(p, x, y, w, h);
+        super(p, x, y, w, h, true, p.HAND);
+    }
+
+    protected ClickableObject(PApplet p, int x, int y, int w, int h, int curs) {
+        super(p, x, y, w, h, true, curs);
     }
 
     public void onMouseClicked() {
@@ -20,23 +24,11 @@ public class ClickableObject extends GraphicObject{
         }
     }
 
-    protected void checkIfHovered() {
-        if (p.mouseX >= x && p.mouseX <= x + w && p.mouseY >= y && p.mouseY <= y + h) { // Tester, om musen er på objektet
-            hovered = true;
-            p.cursor(p.HAND); // Ændrer musen til at være en lille hånd
-        } else {
-            hovered = false;
-            p.cursor(p.ARROW); // Ændrer musen til at være normal
-        }
-    }
-
     protected void onClick() {
         return;
     }
 
     public void draw() {
-        checkIfHovered();
-
         if (!p.mousePressed) { mouseHeld = false; }
 
         if (mouseHeld) {
@@ -47,7 +39,7 @@ public class ClickableObject extends GraphicObject{
             p.fill(255);
         }
 
-        p.rect(x, y, w, h);
+        super.draw();
     }
 }
 
