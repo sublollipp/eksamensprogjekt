@@ -33,6 +33,7 @@ public class SideMenu extends HoverableObject implements ScrollResponsive, Click
 
     public void setMenuButtons(File dir) {
         clearButtons();
+        if (!dir.isDirectory()) return;
         File[] subDirs = dir.listFiles();
         if (subDirs.length <= 0) { return; }
         for(int i = 0; i < subDirs.length; i++) {

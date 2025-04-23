@@ -53,10 +53,13 @@ public abstract class FileManager {
         }
     }
 
-    public static String checkFileMatches(File directory, String fileName) {
+    public static String checkFileMatches(File dire, String fileName) {
         boolean hasMatch = false;
         String newName = fileName;
-        //System.out.println("Checker for navnet: " + newName);
+        File directory = dire;
+        if (directory == null) directory = FileManager.root();
+        System.out.println("Checker for navnet: " + newName + " i directoriet " + dire.getAbsolutePath());
+        if (directory.listFiles() == null) return fileName; 
         for (File f : directory.listFiles()) {
             if (f.isFile()) {
                 //System.out.println(f.getName().substring(0, f.getName().length() - 5));
@@ -90,6 +93,7 @@ public abstract class FileManager {
     public static String checkFolderMatches(File directory, String folderName) {
         boolean hasMatch = false;
         String newName = folderName;
+        if (directory.listFiles() == null) return folderName;
         for (File f : directory.listFiles()) {
             if (f.isDirectory()) {
                 if (f.getName().equals(folderName)) {
@@ -144,9 +148,11 @@ public abstract class FileManager {
             return;
         }
 
-        for (File f : dir.listFiles()) {
-            if (f.isDirectory()) deleteDir(f);
-            f.delete();
+        if (dir.isDirectory()) {
+            for (File f : dir.listFiles()) {
+                if (f.isDirectory()) deleteDir(f);
+                f.delete();
+            }
         }
 
         dir.delete();
@@ -208,27 +214,7 @@ public abstract class FileManager {
             .replace("\\\"", "\"")
             .replace("\\\\", "\\");
     }
-/*
-    public static makeFile(File directory, String fileName) {
-        ArrayList<String> subDirs = new ArrayList<String>();
 
-        boolean cloneExists = true;
-        while (cloneExists) {
-            boolean tempExists = false;
-            for (File f : directory.listFiles()) {
-                if (f.isFile()) {
-                    if
-                }
-            }
-        }
-
-        for(File f : directory.listFiles()) {
-            if (f.isFile()) {
-                String fileName = f.getName().substring(0, f.getName().length() - 5)
-            }
-        }
-    }
-*/
     public static String[] getCurrentDirectoryItems() {
 
         String progFil = System.getenv("ProgramFiles");

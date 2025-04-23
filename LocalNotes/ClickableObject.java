@@ -1,6 +1,6 @@
 import processing.core.*;
 
-public class ClickableObject extends HoverableObject implements ClickResponsive {
+public abstract class ClickableObject extends HoverableObject implements ClickResponsive {
 
     protected boolean mouseHeld = false;
 

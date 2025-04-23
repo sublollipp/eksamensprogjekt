@@ -1,6 +1,6 @@
 import processing.core.*;
 
-abstract class GraphicObject {
+public abstract class GraphicObject {
 
     protected PApplet p;
     protected int x, y, w, h, ox, oy;

@@ -1,10 +1,12 @@
 import processing.core.*;
 
+// Checker, om musen er over den og kan evt. sætte cursor
 public abstract class HoverableObject extends GraphicObject {
     protected boolean hovered = false, hasCursor = false;
     protected int hoverCursor = p.ARROW;
     protected LocalNotesSingleton ln;
 
+    // To constructors
     HoverableObject(PApplet p, int x, int y, int w, int h) {
         super(p, x, y, w, h);
         ln = LocalNotesSingleton.getInstance();

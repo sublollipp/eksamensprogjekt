@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.io.File;
 
+// Singleton og main-program
 public class LocalNotesSingleton {
 
     private static LocalNotesSingleton instance = null; // Global reference til singleton-objektet
@@ -53,8 +54,6 @@ public class LocalNotesSingleton {
     // For at holde programmet i orden bruges kun setters/adders fra selve programmet til popups - ikke Arraylist's indbyggede
 
     boolean popupOpen = false;
-
-    String fiskTilMig = "Kenneth"; // Debug
 
     private LocalNotesSingleton() {} // Den meget spændende constructor
 
