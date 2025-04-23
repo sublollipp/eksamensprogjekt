@@ -11,7 +11,7 @@ Noterne gemmes i din Program Files mappe under en mappe ved navn "Notes".
 Programmet kan køres ved enten at højreklikke på LocalNotes.pde for at åbne det med processing, eller ved at åbne den i VSCode og køre den der (såfremt de rette extensions er installeret).
 
 ## Installation - Windows Executable
-[Hent windows-zippen her](https://youtube.com). Unzip den og højreklik på filen med navnet LocalNotes.exe
+[Hent windows-zippen her](https://github.com/sublollipp/eksamensprogjekt/releases/tag/1.0.0). Unzip den og højreklik på filen med navnet LocalNotes.exe
 
 Windows 10: Tryk send til -> Skrivebordsgenvej
 
