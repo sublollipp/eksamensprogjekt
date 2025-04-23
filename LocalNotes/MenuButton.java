@@ -4,6 +4,8 @@ import java.io.File;
 public abstract class MenuButton extends ClickableObject implements RightClickResponsive {
 
     public boolean parentHovered = false;
+    
+    protected boolean selected = false;
 
     protected String name = "";
     protected int buttonHeight = 50, iconWidth = 0;
@@ -37,6 +39,10 @@ public abstract class MenuButton extends ClickableObject implements RightClickRe
             p.fill(200);
         } else {
             p.fill(255);
+        }
+
+        if (selected) {
+            p.fill(125);
         }
 
         p.strokeWeight(3);

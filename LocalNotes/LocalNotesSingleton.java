@@ -225,10 +225,11 @@ public class LocalNotesSingleton {
         currentFile = newCurrentFile;
         TypingSurface ts = null;
         for(GraphicObject obj : gO) {
-            if (obj instanceof GraphicObject) {
+            if (obj instanceof TypingSurface) {
                 ts = (TypingSurface) obj;
-                break;
             }
+
+            if (obj instanceof Sidebar) ((Sidebar) obj).setCurrentFile(newCurrentFile);
         }
         if (!(ts instanceof TypingSurface) || ts == null) return;
         String[] lines;

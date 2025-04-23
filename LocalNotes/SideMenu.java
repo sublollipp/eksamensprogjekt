@@ -16,6 +16,19 @@ public class SideMenu extends HoverableObject implements ScrollResponsive, Click
         super(p, x, y, w, h);
     }
 
+    public void setCurrentFile(File newCurrentFile) {
+        for (MenuButton but : menuButtons) {
+            if (but instanceof FileButton) {
+                FileButton fb = (FileButton) but;
+                if (fb.getButtonFile().equals(newCurrentFile)) {
+                    fb.makeCurrentFile();
+                } else {
+                    fb.makeNotCurrentFile();
+                }
+            }
+        }
+    }
+
     public void setMenuButtons(ArrayList<MenuButton> newList) {
         menuButtons = newList;
         updateTotalHeight();

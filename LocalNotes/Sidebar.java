@@ -14,6 +14,10 @@ public class Sidebar extends GraphicObject implements ClickResponsive, ScrollRes
         sideMenu = new SideMenu(p, x, y + headerHeight, w, h - headerHeight);
     }
 
+    public void setCurrentFile(File newCurrentFile) {
+        sideMenu.setCurrentFile(newCurrentFile);
+    }
+
     public void onMouseClicked() {
         header.onMouseClicked();
         sideMenu.onMouseClicked();

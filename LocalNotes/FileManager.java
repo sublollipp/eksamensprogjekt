@@ -171,13 +171,13 @@ public abstract class FileManager {
         try {
             String content = Files.readString(currentFile.toPath(), StandardCharsets.UTF_8).trim();
 
-            // Remove the surrounding square brackets
+            // Fjern []
             if (content.startsWith("[")) content = content.substring(1);
             if (content.endsWith("]")) content = content.substring(0, content.length() - 1);
 
             List<String> lines = new ArrayList<>();
 
-            // Split by commas not inside quotes
+            // Split ved kommaer, ikke indenfor gåseøjne
             boolean inQuotes = false;
             StringBuilder current = new StringBuilder();
 
@@ -193,7 +193,7 @@ public abstract class FileManager {
                 current.append(c);
             }
 
-            // Add the last string if present
+            // Tilføj den sidste String, hvis den er der
             String last = current.toString().trim();
             if (!last.isEmpty()) {
                 lines.add(unescapeJson(last.replaceAll("^\"|\"$", "")));
