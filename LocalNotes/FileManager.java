@@ -219,12 +219,12 @@ public abstract class FileManager {
 
         String progFil = System.getenv("ProgramFiles");
 
-        File noteDir = new File(progFil + "/Notes");
+        File noteDir = root();
         System.out.println(noteDir.getAbsolutePath());
 
         if (!noteDir.exists()) {
-            new File(progFil + "/Notes").mkdirs();
-            noteDir = new File(progFil + "/Notes");
+            new File(root().getAbsolutePath()).mkdirs();
+            noteDir = new File(root().getAbsolutePath());
         }
 
         File[] subDirs = noteDir.listFiles();
@@ -244,6 +244,21 @@ public abstract class FileManager {
     }
 
     public static File root() {
-        return new File(System.getenv("ProgramFiles") + "/Notes");
+        String os = System.getProperty("os.name").toLowerCase();
+        System.out.println(os);
+        String homeDir = System.getProperty("user.home");
+        if (os.contains("win")) {
+            String roaming = System.getenv("APPDATA");
+            if (roaming != null) {
+                System.out.println(roaming);
+                return new File(roaming + "\\LocalNotes");
+            } else {
+                return new File(homeDir + "\\Appdata\\Roaming\\LocalNotes");
+            }
+        } else if (os.contains("mac")) {
+            return new File(homeDir + "/Library/Application Support/LocalNotes");
+        } else {
+            return new File(homeDir + "/." + "localnotes");
+        }
     }
 }

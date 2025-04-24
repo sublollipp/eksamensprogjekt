@@ -216,9 +216,6 @@ public class LocalNotesSingleton {
     /* 
      * Kan ikke HELT huske, hvorfor denne her funktion er her. Hvis i ser den, er det fordi jeg glemte at slette den.
      */
-    void UI() {
-
-    }
 
     public void setCurrentFile(File newCurrentFile) {
         if (currentFile != null) save();
@@ -242,7 +239,6 @@ public class LocalNotesSingleton {
     }
 
     public void draw() {
-        UI();
         currentCursor = p.ARROW;
 
         if (!popupOpen) {
