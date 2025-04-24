@@ -244,6 +244,7 @@ public abstract class FileManager {
     }
 
     public static File root() {
+        File rootDir;
         String os = System.getProperty("os.name").toLowerCase();
         System.out.println(os);
         String homeDir = System.getProperty("user.home");
@@ -251,14 +252,20 @@ public abstract class FileManager {
             String roaming = System.getenv("APPDATA");
             if (roaming != null) {
                 System.out.println(roaming);
-                return new File(roaming + "/LocalNotes");
+                rootDir = new File(roaming + "/LocalNotes");
             } else {
-                return new File(homeDir + "/Appdata/Roaming/LocalNotes");
+                rootDir = new File(homeDir + "/Appdata/Roaming/LocalNotes");
             }
         } else if (os.contains("mac")) {
-            return new File(homeDir + "/Library/Application Support/LocalNotes");
+            rootDir = new File(homeDir + "/Library/Application Support/LocalNotes");
         } else {
-            return new File(homeDir + "/." + "localnotes");
+            rootDir = new File(homeDir + "/." + "localnotes");
         }
+
+        if (!(rootDir.exists())) {
+            rootDir.mkdirs();
+        }
+
+        return rootDir;
     }
 }
