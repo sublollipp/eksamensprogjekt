@@ -24,7 +24,7 @@ public abstract class FileManager {
         String fileName = checkFileMatches(directory, filName);
 
         try {
-            File newFile = new File(directory.toString() + "\\" + fileName + ".json");
+            File newFile = new File(directory.toString() + "/" + fileName + ".json");
             if (newFile.createNewFile()) {
                 System.out.println("Fil skabt succesfuldt: " + newFile.toString());
 
@@ -37,7 +37,7 @@ public abstract class FileManager {
             writer.write("[\"\"]");
             writer.close();
         } catch (IOException e) {
-            System.out.println("Noget gik galt da du prøvede at lave en fil");
+            System.out.println("Noget gik galt da du prøvede at lave en fil: " + e.toString());
         }
     }
 
