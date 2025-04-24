@@ -251,9 +251,9 @@ public abstract class FileManager {
             String roaming = System.getenv("APPDATA");
             if (roaming != null) {
                 System.out.println(roaming);
-                return new File(roaming + "\\LocalNotes");
+                return new File(roaming + "/LocalNotes");
             } else {
-                return new File(homeDir + "\\Appdata\\Roaming\\LocalNotes");
+                return new File(homeDir + "/Appdata/Roaming/LocalNotes");
             }
         } else if (os.contains("mac")) {
             return new File(homeDir + "/Library/Application Support/LocalNotes");
