@@ -5,16 +5,21 @@ public abstract class HoverableObject extends GraphicObject {
     protected boolean hovered = false, hasCursor = false;
     protected int hoverCursor = p.ARROW;
     protected LocalNotesSingleton ln;
+    protected float progScale;
+    protected int mX = 0, mY = 0  ; // mouseX og mouseY tranformet ved LocalNotesSingleton.programScale();
 
     // To constructors
     HoverableObject(PApplet p, int x, int y, int w, int h) {
         super(p, x, y, w, h);
         ln = LocalNotesSingleton.getInstance();
+        progScale = LocalNotesSingleton.programScale();
+        System.out.println("Programmet scale er " + String.valueOf(progScale));
     }
 
     HoverableObject(PApplet p, int x, int y, int w, int h, boolean triggerHoverCursor, int hoverCursor) {
         super(p, x, y, w, h);
         ln = LocalNotesSingleton.getInstance();
+        progScale = LocalNotesSingleton.programScale();
         hasCursor = triggerHoverCursor;
         this.hoverCursor = hoverCursor;
     }
@@ -24,7 +29,10 @@ public abstract class HoverableObject extends GraphicObject {
     }
 
     protected void checkIfHovered() {
-        if (p.mouseX >= x && p.mouseX <= x + w && p.mouseY >= y && p.mouseY <= y + h) { // Tester, om musen er på objektet
+        mX = (int) (p.mouseX / progScale);
+        mY = (int) (p.mouseY / progScale);
+
+        if (mX >= x && mX <= x + w && mY >= y && mY <= y + h) { // Tester, om musen er på objektet
             hovered = true;
             if (hasCursor) {
                 ln.currentCursor = hoverCursor;

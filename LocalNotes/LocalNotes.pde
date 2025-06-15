@@ -1,13 +1,19 @@
 LocalNotesSingleton localNotes = null;
 
+float programScale = LocalNotesSingleton.programScale();
+
+void settings() {
+    size((int) (programScale * 1200), (int) (programScale * 800));
+}
+
 void setup() {
-    size(1200, 800);
     LocalNotesSingleton.makeInstance(this);
     localNotes = LocalNotesSingleton.getInstance();
     localNotes.setup();
 }
 
 void draw() {
+    scale(programScale);
     localNotes.draw();
 }
 

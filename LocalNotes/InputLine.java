@@ -48,7 +48,7 @@ public class InputLine extends ClickableObject implements TypeResponsive {
         float mindist = Float.MAX_VALUE;
         int newCursorX = 0;
         for (int i = 0; i <= text.length(); i++) {
-            float newDist = p.abs((x + xMargin + p.textWidth(text.substring(0, i))) - p.mouseX);
+            float newDist = p.abs((x + xMargin + p.textWidth(text.substring(0, i))) - mX);
             if (newDist < mindist) {
                 mindist = newDist;
                 newCursorX = i;

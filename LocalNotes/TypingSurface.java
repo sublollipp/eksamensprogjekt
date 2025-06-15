@@ -102,7 +102,7 @@ public class TypingSurface extends ClickableObject implements TypeResponsive {
 
     public void onClick() {
 
-        int clickedLine = (p.mouseY - y) / lineHeight;
+        int clickedLine = (mY - y) / lineHeight;
         cursorY = p.constrain(clickedLine, 0, lines.size() - 1);
 
         String line = lines.get(cursorY);
@@ -114,7 +114,7 @@ public class TypingSurface extends ClickableObject implements TypeResponsive {
         for (int i = 0; i <= line.length(); i++) {
 
             float charX = x + 5 + p.textWidth(line.substring(0, i));
-            float dist = p.abs(p.mouseX - charX);
+            float dist = p.abs(mX - charX);
 
             if (dist < minDist) {
                 minDist = dist;

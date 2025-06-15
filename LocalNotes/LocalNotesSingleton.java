@@ -22,6 +22,12 @@ import java.io.File;
 public class LocalNotesSingleton {
 
     private static LocalNotesSingleton instance = null; // Global reference til singleton-objektet
+7
+    private final static float progScale = (float) 0.6;
+
+    public static float programScale() {
+        return progScale;
+    }
 
     private PApplet p; // Reference til vor kære PApplet
 
